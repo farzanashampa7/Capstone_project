@@ -1,0 +1,38 @@
+@use './partials/globals';
+
+// html {
+//     box-sizing: border-box;
+    
+//   }
+  
+//   .wrapper {
+//       max-width: 1440px;
+//       width: 95%;
+//       margin: 0 auto;
+  
+//     //   @include tablet{
+//     //       width: 95%;
+//     //   }
+//   } 
+  
+//   body {
+//     margin: 0;
+  
+//   }
+  
+//   *, *::before, *::after {
+//     box-sizing: border-box;
+//   }
+input {
+	&::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
+input[type=number] {
+	-moz-appearance: textfield;
+}

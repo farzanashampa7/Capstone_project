@@ -1,0 +1,26 @@
+@import './typography';
+
+html {
+    box-sizing: border-box;
+    
+  }
+  
+  .wrapper {
+      max-width: 1440px;
+      width: 95%;
+      margin: 0 auto;
+  
+    //   @include tablet{
+    //       width: 95%;
+    //   }
+  } 
+  
+  body {
+    margin: 0;
+    font-family: 'Roboto';
+  
+  }
+  
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }

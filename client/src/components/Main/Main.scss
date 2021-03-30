@@ -1,0 +1,14 @@
+.main {
+    &__header {
+        text-align: center;
+        font-family: cursive;
+        color: indigo;
+    }
+
+    &__input {
+        margin-left: 1rem;
+        border-radius: 0.3rem;
+        padding: 0.8rem 1.5rem;
+        border: 1px solid grey;
+    }
+}

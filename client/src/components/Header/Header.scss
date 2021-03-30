@@ -1,0 +1,52 @@
+.navBar {
+    padding-top: 1rem;
+    height: 70px;
+
+
+    &__logo {
+        color: indigo;
+        font-family: cursive;
+        font-size: 1.8rem;
+        text-decoration: none;
+        
+    }
+}
+
+.hero {
+    background-color: lavender;
+    height: 88vh;
+    display: flex;
+   flex-direction: column;
+
+    &__section {
+        display: flex;
+        justify-content: space-between;
+
+        &--text {
+            width: 40%;
+            margin-left: 3rem;
+            padding-top: 2rem;
+            font-family: cursive;
+            font-size: 1.6rem;
+            color: indigo;
+        }
+
+        &--image {
+            width: 30%;
+        }
+    
+    }
+
+    &__link{
+        text-decoration: none;
+        display: inline-block;
+        margin: 0 auto;
+        color: #ffffff;
+        font-family: cursive;
+        padding: 1rem 2rem;
+        background-color: indigo;
+        border-radius: 2rem;
+    }
+
+}
+
