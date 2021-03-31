@@ -14,7 +14,7 @@ const Header = () => {
                     <p className='hero__section--text'>Learn how to manage & balance your budget with us!</p>
                     <img className='hero__section--image' src={Image} />
                 </div>
-                <a className='hero__link' href='/main'>Get started</a>
+                <a className='hero__link' href='/input'>Get started</a>
             </div>
 
         </header>
