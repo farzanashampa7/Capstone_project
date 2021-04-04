@@ -5,62 +5,124 @@ import "./Input.scss";
 
 class Input extends Component {
     state = {
-        income: 0,
-        expenses: 0,
-        savings: 0
+        isAuthenticated: false,
+        userDetails: null,
+        income: '',
+        expenses: '',
+        savings: ''
     }
 
-    handleChange = (e) => {
-        this.setState({
-            income: e.target.value
-        })
-
+    getMonth() {
+        return new Date().toLocaleString('en-us', { month: 'long' });
     }
 
-    handleSubmit1 = (e) => {
-        e.preventDefault();
+    getYear() {
+        return new Date().getFullYear();
     }
 
     handleSubmit = (e) => {
         const form = e.target;
         e.preventDefault();
         axios
-            .post('http://localhost:8080/input/add', {
+            .post('http://localhost:8080/input/addexpense', {
                 id: uuidv4(),
                 category: form.category.value,
                 amount: form.amount.value
             })
             .then(res => {
-                console.log(res)
+                console.log(res.data)
                 form.reset();
-                // window.location = '/success'
+                this.showExpense();
             })
             .catch(err => console.log(err))
 
     }
-
-    showExpense = (e) => {
-
+    showIncome = () => {
         axios
-            .get('http://localhost:8080/input/')
+            .get('http://localhost:8080/input/addincome')
             .then((response) => {
-                console.log(response);
-                // const result = 0;
-                // for (let i = 0; i < response.length; i++) {
-                //     result += response[i].amount
-                // }
-                // this.setState({
-                //     expenses: result
-                // })
+                console.log(response.data);
+                let result = 0;
+                for (let i = 0; i < response.data.length; i++) {
+                    console.log(result = result + Number(response.data[i].income))
+                }
+                console.log(result)
+                this.setState({
+                    income: result,
+                    savings: result - this.state.expenses
+                })
+
             })
             .catch(err => console.log(err))
     }
 
+    showExpense = () => {
+        axios
+            // .get('http://localhost:8080/input/')
+            .get('http://localhost:8080/input/addexpense')
+            .then((response) => {
+                console.log(response.data);
+                let result = 0;
+                for (let i = 0; i < response.data.length; i++) {
+                    console.log(result = result + Number(response.data[i].amount))
+                }
+                console.log(result)
+                this.setState({
+                    expenses: result,
+                    savings: this.state.income - result
+
+                })
+
+            })
+            .catch(err => console.log(err))
+    }
+
+
+
+    handleIncome = (e) => {
+        const form = e.target;
+        e.preventDefault();
+        axios
+            .post('http://localhost:8080/input/addincome', {
+                id: uuidv4(),
+                income: form.income.value
+            })
+            .then(res => {
+                console.log(res.data)
+                form.reset();
+                this.showIncome();
+            })
+            .catch(err => console.log(err))
+
+    }
+
+    componentDidMount() {
+        // axios
+        //     .get('http://localhost:8080/input', { withCredentials: true })
+        //     .then(res => {
+        //         console.log('Check Auth', res.data);
+
+        //         this.setState({
+        //             isAuthenticated: true,
+        //             userDetails: res.data
+        //         })
+        //     })
+        //     .catch(() => {
+        //         this.props.history.push('/login');
+        //     });
+
+        this.showIncome();
+        this.showExpense();
+
+    }
 
     render() {
+        // if (!this.state.isAuthenticated) return null;
+
         const { income, expenses, savings } = this.state;
         return (
             <section className='main'>
+                <h2 className='main__header'>Expenditure for {this.getMonth()}, {this.getYear()} </h2>
                 <div className='main__container'>
                     <div className='main__flex-div'>
                         Income: {income}
@@ -73,7 +135,7 @@ class Input extends Component {
                     </div>
                 </div>
 
-                <form className='main__form-input' onSubmit={this.handleSubmit1}>
+                <form className='main__form-input' onSubmit={this.handleIncome}>
                     <label className='main__input-label' htmlFor='income'>Enter your monthly income:</label>
                     <input id="income" className='main__input' onChange={this.handleChange} type='number' name='income' required />
 
@@ -82,7 +144,7 @@ class Input extends Component {
 
                 <div>
                     <h3>Add expenses</h3>
-                    <form className='main__form-select' onSubmit={this.handleSubmit}>
+                    <form className='main__form-select' onSubmit={this.handleSubmit} >
                         <label className='main__input-label' htmlFor='category'>Choose category</label>
                         <select name='category' required>
                             <option aria-label='None' value='' />
@@ -98,7 +160,7 @@ class Input extends Component {
 
                         <label className='main__input-label' htmlFor='amount'>Enter amount</label>
                         <input id="amount" className='main__input' type='number' name='amount' required />
-                        <button className="main__button" >Add income</button>
+                        <button className="main__button">Add income</button>
                     </form>
                 </div>
 

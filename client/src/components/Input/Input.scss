@@ -4,6 +4,12 @@
         justify-content: space-evenly;
     }
 
+    &__header {
+        text-align: center;
+        font-family: cursive;
+        color: indigo;
+    }
+
     &__flex-div {
         border: 1px solid grey;
         width: 200px;

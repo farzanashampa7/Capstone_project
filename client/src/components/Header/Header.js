@@ -1,23 +1,20 @@
 import React from 'react';
 import './Header.scss';
-import Image from '../../assets/images/background_image.png';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
 
     return (
-        <header>
-            <nav className='navBar'>
-                <a href='/' className='navBar__logo'>Budgetery</a>
-            </nav>
-            <div className='hero'>
-                <div className='hero__section'>
-                    <p className='hero__section--text'>Learn how to manage & balance your budget with us!</p>
-                    <img className='hero__section--image' src={Image} />
-                </div>
-                <a className='hero__link' href='/input'>Get started</a>
-            </div>
-
-        </header>
+        <>
+            <header className='wrapper'>
+                <nav className='navBar'>
+                    <a href='/' className='navBar__logo'>Budgetery</a>
+                    {/* <div>
+                        <NavLink to='/login' className='navbar__login' active>Login</NavLink>
+                    </div> */}
+                </nav>
+            </header>
+        </>
     );
 };
 
