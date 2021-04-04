@@ -4,7 +4,7 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
 router.use((_req, _res, next) => {
-    console.log('Middleware from input router');
+    console.log('Middleware from input router and user', _req.user);
     next();
 })
 

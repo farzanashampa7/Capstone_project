@@ -55,11 +55,21 @@ app.post("/signup", async (req, res) => {
     try {
         const { userName, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const todayDate = new Date();
+        const year = todayDate.getFullYear();
+        const month = todayDate.getMonth() + 1;
         const newUser = {
             id: uuidv4(),
             userName: userName,
             email: email,
-            password: hashedPassword
+            password: hashedPassword,
+            expenditure: {}
+        };
+
+        newUser.expenditure[year] = {};
+        newUser.expenditure[year][month] = {
+            "income": "",
+            "expenses": []
         };
 
         users.push(newUser);

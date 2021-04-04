@@ -9,7 +9,40 @@ class Input extends Component {
         userDetails: null,
         income: '',
         expenses: '',
-        savings: ''
+        savings: '',
+        userData: {
+            "id": "5d61358d-c93a-4b3d-966e-5d2ac5a2bf74",
+            "userName": "hello",
+            "email": "hello@mail.com",
+            "password": "$2b$10$yZbMNt9YNouE2Z8swk5fAuAkJ48iRg96Iwr.SzwYJFrei6oAIYCAu",
+            "expenditure": {
+                "2021": {
+                    "4": {
+                        "income": "",
+                        "expenses": []
+                    }
+                }
+            }
+        }
+    }
+
+    componentDidMount() {
+        // axios
+        //     .get('http://localhost:8080/input', { withCredentials: true })
+        //     .then(res => {
+        //         console.log('Check Auth', res.data);
+
+        //         this.setState({
+        //             isAuthenticated: true,
+        //             userDetails: res.data
+        //         })
+        //     })
+        //     .catch(() => {
+        //         this.props.history.push('/login');
+        //     });
+
+        this.showIncome();
+        this.showExpense();
     }
 
     getMonth() {
@@ -36,6 +69,24 @@ class Input extends Component {
             })
             .catch(err => console.log(err))
 
+        // Below is theoritical code
+        /* const userData = this.state.userData,
+            currentYear = new Date().getFullYear(),
+            currentMonth = new Date().getMonth() + 1;
+
+        if (userData[currentYear].length === undefined) {
+            userData[currentYear] = {}
+        }
+
+        if (userData[currentYear][currentMonth].length === undefined) {
+            userData[currentYear][currentMonth] = []
+        }
+
+        userData[currentYear][currentMonth].push({
+            id: uuidv4(),
+            category: form.category.value,
+            amount: form.amount.value
+        }) */
     }
     showIncome = () => {
         axios
@@ -93,26 +144,6 @@ class Input extends Component {
                 this.showIncome();
             })
             .catch(err => console.log(err))
-
-    }
-
-    componentDidMount() {
-        // axios
-        //     .get('http://localhost:8080/input', { withCredentials: true })
-        //     .then(res => {
-        //         console.log('Check Auth', res.data);
-
-        //         this.setState({
-        //             isAuthenticated: true,
-        //             userDetails: res.data
-        //         })
-        //     })
-        //     .catch(() => {
-        //         this.props.history.push('/login');
-        //     });
-
-        this.showIncome();
-        this.showExpense();
 
     }
 
