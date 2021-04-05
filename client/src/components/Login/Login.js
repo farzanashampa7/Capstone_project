@@ -18,6 +18,7 @@ class Login extends Component {
         })
             .then(res => {
                 console.log(res.data)
+                const id = res.data.id;
                 this.props.history.push('/input')
             })
             .catch(err => console.log(err))
@@ -33,10 +34,8 @@ class Login extends Component {
                             className="form-control"
                             id="email"
                             name="email"
-                            // aria-describedby="emailHelp"
                             placeholder="Enter email"
                         />
-                        {/* <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small> */}
                     </div>
                     <div className="form-group text-left">
                         <label htmlFor="password">Password</label>

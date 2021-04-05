@@ -9,40 +9,27 @@ class Input extends Component {
         userDetails: null,
         income: '',
         expenses: '',
-        savings: '',
-        userData: {
-            "id": "5d61358d-c93a-4b3d-966e-5d2ac5a2bf74",
-            "userName": "hello",
-            "email": "hello@mail.com",
-            "password": "$2b$10$yZbMNt9YNouE2Z8swk5fAuAkJ48iRg96Iwr.SzwYJFrei6oAIYCAu",
-            "expenditure": {
-                "2021": {
-                    "4": {
-                        "income": "",
-                        "expenses": []
-                    }
-                }
-            }
-        }
+        savings: ''
     }
 
     componentDidMount() {
-        // axios
-        //     .get('http://localhost:8080/input', { withCredentials: true })
-        //     .then(res => {
-        //         console.log('Check Auth', res.data);
+        axios
+            .get('http://localhost:8080/input', { withCredentials: true })
+            // .get(`http://localhost:8080/input/${id}`, { withCredentials: true })
+            .then(res => {
+                console.log('Check Auth', res.data);
 
-        //         this.setState({
-        //             isAuthenticated: true,
-        //             userDetails: res.data
-        //         })
-        //     })
-        //     .catch(() => {
-        //         this.props.history.push('/login');
-        //     });
-
-        this.showIncome();
-        this.showExpense();
+                this.setState({
+                    isAuthenticated: true,
+                    userDetails: res.data
+                })
+                console.log(this.state.userDetails)
+                this.showIncome();
+                this.showExpense();
+            })
+            .catch(() => {
+                this.props.history.push('/login');
+            });
     }
 
     getMonth() {
@@ -56,9 +43,9 @@ class Input extends Component {
     handleSubmit = (e) => {
         const form = e.target;
         e.preventDefault();
+        const id = this.state.userDetails.id;
         axios
-            .post('http://localhost:8080/input/addexpense', {
-                id: uuidv4(),
+            .post(`http://localhost:8080/input/${id}/addexpense`, {
                 category: form.category.value,
                 amount: form.amount.value
             })
@@ -89,8 +76,9 @@ class Input extends Component {
         }) */
     }
     showIncome = () => {
+        const id = this.state.userDetails.id;
         axios
-            .get('http://localhost:8080/input/addincome')
+            .get(`http://localhost:8080/input/${id}/addincome`)
             .then((response) => {
                 console.log(response.data);
                 let result = 0;
@@ -108,9 +96,9 @@ class Input extends Component {
     }
 
     showExpense = () => {
+        const id = this.state.userDetails.id;
         axios
-            // .get('http://localhost:8080/input/')
-            .get('http://localhost:8080/input/addexpense')
+            .get(`http://localhost:8080/input/${id}/addexpense`)
             .then((response) => {
                 console.log(response.data);
                 let result = 0;
@@ -133,13 +121,12 @@ class Input extends Component {
     handleIncome = (e) => {
         const form = e.target;
         e.preventDefault();
+        const id = this.state.userDetails.id;
         axios
-            .post('http://localhost:8080/input/addincome', {
-                id: uuidv4(),
+            .post(`http://localhost:8080/input/${id}/addincome`, {
                 income: form.income.value
             })
             .then(res => {
-                console.log(res.data)
                 form.reset();
                 this.showIncome();
             })
@@ -148,8 +135,6 @@ class Input extends Component {
     }
 
     render() {
-        // if (!this.state.isAuthenticated) return null;
-
         const { income, expenses, savings } = this.state;
         return (
             <section className='main'>

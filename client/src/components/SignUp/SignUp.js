@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './SignUp.scss';
 
 class SignUp extends Component {
 
@@ -14,7 +15,7 @@ class SignUp extends Component {
             })
             .then(res => {
                 this.props.history.push('/login')
-                // e.reset();
+
             })
             .catch(err => console.log(err))
     }
@@ -22,32 +23,31 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group text-left">
-                        <label htmlFor="userName">User name</label>
+            <div className="form">
+                <form onSubmit={this.handleSubmit} className="form__group">
+                    <div className="form__section">
+                        <label htmlFor="userName" className="form__label">User name:</label>
                         <input type="text"
-                            className="form-control"
+                            className="form__control"
                             id="userName"
                             name="userName"
-                            // aria-describedby="emailHelp"
                             placeholder="Enter User Name"
 
                         />
                     </div>
-                    <div className="form-group text-left">
-                        <label htmlFor="email">Email address</label>
+                    <div className="form__section ">
+                        <label htmlFor="email" className="form__label">Email address:</label>
                         <input type="email"
-                            className="form-control"
+                            className="form__control"
                             id="email"
                             name="email"
                             placeholder="Enter email"
                         />
                     </div>
-                    <div className="form-group text-left">
-                        <label htmlFor="password">Password</label>
+                    <div className="form__section ">
+                        <label htmlFor="password" className="form__label">Password:</label>
                         <input type="password"
-                            className="form-control"
+                            className="form__control"
                             id="password"
                             name="password"
                             placeholder="Password"
@@ -55,7 +55,7 @@ class SignUp extends Component {
                     </div>
                     <button
                         type="submit"
-                        className="btn btn-primary"
+                        className="form__button"
                     >
                         Sign Up
                     </button>

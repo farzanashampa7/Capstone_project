@@ -66,30 +66,23 @@ app.post("/signup", async (req, res) => {
             expenditure: {}
         };
 
-        newUser.expenditure[year] = {};
-        newUser.expenditure[year][month] = {
-            "income": "",
-            "expenses": []
-        };
-
         users.push(newUser);
         fs.writeFileSync("./data/users.json", JSON.stringify(users));
-        // fs.writeFileSync(`./data/${userName}.json`, JSON.stringify(newUser));
         res.status(201).json(newUser);
         console.log(users)
         return;
     }
     catch {
         console.log('Catching error')
-        //res.redirect('/signup')
     }
 });
 
-app.post('/login', passport.authenticate('local', {
-    successRedirect: '/input',
-    failureRedirect: '/login',
-    failureFlash: true
-}));
+app.post('/login', passport.authenticate('local',
+    {
+        successRedirect: '/input/',
+        failureRedirect: '/login',
+        failureFlash: true
+    }));
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
@@ -99,6 +92,7 @@ function checkAuthenticated(req, res, next) {
 }
 
 app.get('/input', checkAuthenticated, (req, res) => {
+    console.log(req.user);
     if (req.user === undefined) return res.status(401).send('Unauthorized');
     res.status(200).json(req.user);
 })

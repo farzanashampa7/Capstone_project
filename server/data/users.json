@@ -1,1 +1,63 @@
-[{"id":"5d61358d-c93a-4b3d-966e-5d2ac5a2bf74","userName":"hello","email":"hello@mail.com","password":"$2b$10$yZbMNt9YNouE2Z8swk5fAuAkJ48iRg96Iwr.SzwYJFrei6oAIYCAu","expenditure":{"2021":{"4":{"income":"","expenses":[]}}}},{"id":"f5de1fdc-5987-4561-892c-a679f78f0758","userName":"hello","email":"hello@mail.com","password":"$2b$10$SmakWDjiZIl/NuTYSQ1veuVSqckPfViPsNoqOxVuwr6E6fE1d2J3a","expenditure":{"2021":{"4":{"income":"","expenses":[]}}}}]
+[
+    {
+        "id": "591b19fe-a226-41b1-8522-4b29b6403d07",
+        "userName": "hello",
+        "email": "hello@mail.com",
+        "password": "$2b$10$rUm/FyP.vC8p1k9QmCohQORzn9zZU5BDEZUBXLthDPG17YXefb12.",
+        "expenditure": {
+            "2021": {
+                "4": {
+                    "income": [
+                        {
+                            "income": "4000"
+                        },
+                        {
+                            "income": "450"
+                        }
+                    ],
+                    "expense": [
+                        {
+                            "category": "House Rent",
+                            "amount": "2000"
+                        },
+                        {
+                            "category": "Grocery",
+                            "amount": "500"
+                        },
+                        {
+                            "category": "Car Insurance",
+                            "amount": "350"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "id": "5399f9b2-0c64-4aa5-9015-294f8875bf50",
+        "userName": "test",
+        "email": "test@mail.com",
+        "password": "$2b$10$WiHpgCX48ARBJTFwiCrRs.n8YOQpvsh3v/aqGRaT2rzJZX28rHP7G",
+        "expenditure": {
+            "2021": {
+                "4": {
+                    "income": [
+                        {
+                            "income": "4000"
+                        }
+                    ],
+                    "expense": [
+                        {
+                            "category": "House Rent",
+                            "amount": "1850"
+                        },
+                        {
+                            "category": "Grocery",
+                            "amount": "400"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+]
