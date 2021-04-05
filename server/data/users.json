@@ -1,32 +1,53 @@
 [
     {
-        "id": "591b19fe-a226-41b1-8522-4b29b6403d07",
-        "userName": "hello",
-        "email": "hello@mail.com",
-        "password": "$2b$10$rUm/FyP.vC8p1k9QmCohQORzn9zZU5BDEZUBXLthDPG17YXefb12.",
+        "id": "9ce136f9-ece9-49e7-8990-fe6854ae1f2c",
+        "userName": "shovon",
+        "email": "shovon@gmail.com",
+        "password": "$2b$10$ycucR3Y8Wu10CmEG05dIGuS8wmud4A70ootM7GEK0Qcb0xWpIWdgG",
         "expenditure": {
             "2021": {
                 "4": {
                     "income": [
                         {
                             "income": "4000"
-                        },
-                        {
-                            "income": "450"
                         }
                     ],
                     "expense": [
                         {
                             "category": "House Rent",
-                            "amount": "2000"
+                            "amount": "1800"
                         },
                         {
                             "category": "Grocery",
-                            "amount": "500"
+                            "amount": "750"
+                        },
+                        {
+                            "category": "Restaurant",
+                            "amount": "200"
+                        },
+                        {
+                            "category": "Travel",
+                            "amount": "100"
+                        },
+                        {
+                            "category": "Restaurant",
+                            "amount": "200"
+                        },
+                        {
+                            "category": "Internet Bill",
+                            "amount": "50"
+                        },
+                        {
+                            "category": "Travel",
+                            "amount": "1000"
                         },
                         {
                             "category": "Car Insurance",
-                            "amount": "350"
+                            "amount": "250"
+                        },
+                        {
+                            "category": "Shopping",
+                            "amount": "200"
                         }
                     ]
                 }
@@ -34,10 +55,10 @@
         }
     },
     {
-        "id": "5399f9b2-0c64-4aa5-9015-294f8875bf50",
-        "userName": "test",
-        "email": "test@mail.com",
-        "password": "$2b$10$WiHpgCX48ARBJTFwiCrRs.n8YOQpvsh3v/aqGRaT2rzJZX28rHP7G",
+        "id": "3e6f9954-7224-4f75-b176-6de948254e2d",
+        "userName": "hello",
+        "email": "hello@gmail.com",
+        "password": "$2b$10$n.wdvTDm2WQlkcygTtXnOu7FD1LnGoeIo9BTaxVmlYMmEwrXU2b8q",
         "expenditure": {
             "2021": {
                 "4": {
@@ -49,11 +70,19 @@
                     "expense": [
                         {
                             "category": "House Rent",
-                            "amount": "1850"
+                            "amount": "1800"
+                        },
+                        {
+                            "category": "Car Insurance",
+                            "amount": "250"
                         },
                         {
                             "category": "Grocery",
-                            "amount": "400"
+                            "amount": "1950"
+                        },
+                        {
+                            "category": "Car Insurance",
+                            "amount": "250"
                         }
                     ]
                 }

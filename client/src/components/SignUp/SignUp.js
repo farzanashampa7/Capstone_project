@@ -50,7 +50,7 @@ class SignUp extends Component {
                             className="form__control"
                             id="password"
                             name="password"
-                            placeholder="Password"
+                            placeholder="Enter password"
                         />
                     </div>
                     <button

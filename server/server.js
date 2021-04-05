@@ -92,7 +92,6 @@ function checkAuthenticated(req, res, next) {
 }
 
 app.get('/input', checkAuthenticated, (req, res) => {
-    console.log(req.user);
     if (req.user === undefined) return res.status(401).send('Unauthorized');
     res.status(200).json(req.user);
 })

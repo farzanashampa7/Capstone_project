@@ -28,7 +28,6 @@ router.get('/:userId/addincome', (req, res) => {
     currentYear = new Date().getFullYear(),
         currentMonth = new Date().getMonth() + 1
     const userId = req.params.userId;
-    // console.log(userId);
     const userData = readUsers();
     const user = userData.find(user => user.id === userId);
     const userIncome = user.expenditure[currentYear][currentMonth].income;

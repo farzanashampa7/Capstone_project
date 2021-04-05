@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './Login.scss';
 
 class Login extends Component {
 
@@ -18,7 +19,7 @@ class Login extends Component {
         })
             .then(res => {
                 console.log(res.data)
-                const id = res.data.id;
+                // const id = res.data.id;
                 this.props.history.push('/input')
             })
             .catch(err => console.log(err))
@@ -26,36 +27,34 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group text-left">
-                        <label htmlFor="email">Email address</label>
+            <div className='loginForm'>
+                <form onSubmit={this.handleSubmit} className='loginForm__group'>
+                    <div className="loginForm__section">
+                        <label htmlFor="email" className='loginForm__label'>Email address</label>
                         <input type="email"
-                            className="form-control"
+                            className="loginForm__control"
                             id="email"
                             name="email"
                             placeholder="Enter email"
                         />
                     </div>
-                    <div className="form-group text-left">
-                        <label htmlFor="password">Password</label>
+                    <div className="loginForm__section">
+                        <label htmlFor="password" className='loginForm__label'>Password</label>
                         <input type="password"
-                            className="form-control"
+                            className="loginForm__control"
                             id="password"
                             name="password"
-                            placeholder="Password"
+                            placeholder="Enter password"
                         />
                     </div>
                     <button
                         type="submit"
-                        className="btn btn-primary"
+                        className="loginForm__button"
                     >
                         Login
                     </button>
                 </form>
-
-                <p>Don't have an account? <Link to='/signup'>Sign Up!</Link> </p>
-
+                <p className='loginForm__text'>Don't have an account? <Link className='loginForm__link' to='/signup'>Sign Up!</Link> </p>
             </div>
         );
     }

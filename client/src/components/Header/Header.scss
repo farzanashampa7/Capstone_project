@@ -16,9 +16,9 @@
 
 .hero {
     background-color: lavender;
-    height: 88vh;
+    height: 88.5vh;
     display: flex;
-   flex-direction: column;
+    flex-direction: column;
 
     &__section {
         display: flex;
@@ -34,7 +34,7 @@
         }
 
         &--image {
-            width: 30%;
+            width: 28%;
         }
     
     }
@@ -48,6 +48,12 @@
         padding: 1rem 2rem;
         background-color: indigo;
         border-radius: 2rem;
+    }
+
+    &__link:hover,
+    &__link:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em adjust-hue($color: indigo, $degrees: 45deg) ;
+    transform: translateY(-0.25em);
     }
 
 }
