@@ -11,14 +11,115 @@
     }
 
     &__flex-div {
-        border: 1px solid grey;
+        border: 1px solid salmon;
         width: 200px;
         height: 100px;
         margin-top: 2rem;
         border-radius: 0.4rem;
+        padding: 1.5rem 0 0 1rem;
+        font-size: 1.2rem;
+        font-family: cursive;
+        background-image: linear-gradient(60deg,rgb(240, 171, 164), white);
     }
 
     &__alert {
         color: red;
     }
+
+    &__container-sub {
+        display: flex;
+        justify-content: space-between;
+        // border-top: 1px solid lightgrey;
+        align-items: center;
+    }
+
+    &__heading {
+        color: rgb(46, 44, 44);
+        font-size: 1.4rem;
+        // border-bottom: 1px solid lightgray;
+        font-family: cursive;
+    }
+
+    &__form {
+        width: 40%;
+    }
+
+    &__form-container {
+        margin-bottom: 3rem;
+    }
+
+    &__form-input {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        width: 100%;
+        height: 40px;
+        border-radius: 0.4rem;
+        border: 1px solid rgb(163, 159, 159);
+    }
+
+    &__input[placeholder] {
+        padding-left: 1rem;
+        font-size: 0.9rem;
+        font-family: cursive;
+    }
+
+    &__input-label {
+        font-family: cursive;
+        margin-bottom: 0.8rem;
+        color: indigo;
+    }
+
+    &__button {
+        margin-top: 1rem;
+        width: 125px;
+        color: #ffffff;
+        font-family: cursive;
+        font-size: 0.9rem;
+        padding: 1rem 0;
+        background-color: indigo;
+        border: none;
+        border-radius: 2rem;
+        
+    }
+
+    &__button:hover,
+    &__button:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em adjust-hue($color: indigo, $degrees: 45deg) ;
+    transform: translateY(-0.25em);
+    }
+
+    &__form-select {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input-select {
+        height: 40px;
+        border-radius: 0.4rem;
+        border: 1px solid rgb(163, 159, 159);
+        font-family: cursive;
+        color: grey;
+        font-size: 0.9rem;
+        margin-bottom: 1.6rem;
+    }
+
+    &__expense-container {
+        width: 35%;
+    }
+
+    &__expense-list {
+        list-style: none;
+        padding: 1rem 4rem;
+        // width: 150%;
+        background-image: linear-gradient(310deg, lavender, rgb(239, 228, 247));
+        border: 1px solid lightgrey;
+        border-radius: 0.4rem;
+        margin: 0.4rem;
+        font-family: cursive;
+        font-size: 1.2rem;
+    }
+    
 }

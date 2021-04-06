@@ -120,7 +120,7 @@ class Input extends Component {
         const { income, expenses, savings, expenditureList } = this.state;
         console.log(expenditureList);
         return (
-            <section className='main'>
+            <section className='main wrapper'>
                 <h2 className='main__header'>Expenditure for {this.getMonth()}, {this.getYear()} </h2>
                 <div className='main__container'>
                     <div className='main__flex-div'>
@@ -139,24 +139,24 @@ class Input extends Component {
                     </div>
                 )}
 
-                <div>
-                    <div>
-                        <div>
-                            <h3>Add your income</h3>
+                <div className='main__container-sub'>
+                    <div className='main__form'>
+                        <div className='main__form-container'>
+                            <h3 className='main__heading'>Add your income</h3>
                             <form className='main__form-input' onSubmit={this.handleIncome}>
                                 <label className='main__input-label' htmlFor='income'>Enter your monthly income:</label>
-                                <input id="income" className='main__input' onChange={this.handleChange} type='number' name='income' required />
+                                <input id="income" className='main__input' onChange={this.handleChange} type='number' name='income' required placeholder='Enter income' />
 
                                 <button className="main__button" >Add income</button>
                             </form>
                         </div>
 
                         <div>
-                            <h3>Add monthly expenses</h3>
+                            <h3 className='main__heading'>Add monthly expenses</h3>
                             <form className='main__form-select' onSubmit={this.handleSubmit} >
                                 <label className='main__input-label' htmlFor='category'>Choose category</label>
-                                <select name='category' required>
-                                    <option aria-label='None' value='' />
+                                <select className='main__input-select' name='category' required>
+                                    <option aria-label='None' value=''>Select your expense category</option>
                                     <option value='Grocery'>Grocery</option>
                                     <option value='House Rent'>House Rent</option>
                                     <option value='Car Insurance'>Car Insurance</option>
@@ -168,23 +168,19 @@ class Input extends Component {
                                 </select>
 
                                 <label className='main__input-label' htmlFor='amount'>Enter amount</label>
-                                <input id="amount" className='main__input' type='number' name='amount' required />
-                                <button className="main__button">Add income</button>
+                                <input id="amount" className='main__input' type='number' name='amount' required placeholder='Enter amount' />
+                                <button className="main__button">Add bill</button>
                             </form>
                         </div>
-                        {expenditureList && (
-                            <div>
-                                <ul>
-                                    {expenditureList.map(item => {
-                                        return <li>{item.category} : {item.amount}</li>
-                                    }
-
-                                    )}
-                                </ul>
-                            </div>
-                        )}
-
                     </div>
+                    {expenditureList && (
+                        <div className='main__expense-container'>
+                            {expenditureList.map(item => {
+                                return <li className='main__expense-list'>{item.category} : ${item.amount}</li>
+                            }
+                            )}
+                        </div>
+                    )}
                 </div>
             </section>
         );

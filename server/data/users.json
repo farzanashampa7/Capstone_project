@@ -38,16 +38,8 @@
                             "amount": "50"
                         },
                         {
-                            "category": "Travel",
-                            "amount": "1000"
-                        },
-                        {
                             "category": "Car Insurance",
                             "amount": "250"
-                        },
-                        {
-                            "category": "Shopping",
-                            "amount": "200"
                         }
                     ]
                 }
@@ -83,6 +75,10 @@
                         {
                             "category": "Car Insurance",
                             "amount": "250"
+                        },
+                        {
+                            "category": "Mobile Bill",
+                            "amount": "50"
                         }
                     ]
                 }
