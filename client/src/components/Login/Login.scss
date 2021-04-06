@@ -3,12 +3,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    // width: 60%;
+
+    &__heading {
+        margin: 0;
+        font-family: cursive;
+    }
 
     &__group {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 33%;
+        width: 35%;
         height: 400px;
         margin: 0 auto;
         padding-top: 5rem;
@@ -20,6 +26,7 @@
     
     &__section {
         margin-bottom: 1.5rem;
+        width: 90%;
     }
 
     &__label {

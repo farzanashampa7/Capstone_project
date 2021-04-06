@@ -20,7 +20,6 @@ app.use(express.json());
 //PORT SETUP
 require("dotenv").config();
 const port = process.env.PORT || 8080;
-
 const inputRoutes = require("./routes/inputRoutes");
 
 app.use("/input", inputRoutes);
@@ -55,9 +54,9 @@ app.post("/signup", async (req, res) => {
     try {
         const { userName, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        const todayDate = new Date();
-        const year = todayDate.getFullYear();
-        const month = todayDate.getMonth() + 1;
+        // const todayDate = new Date();
+        // const year = todayDate.getFullYear();
+        // const month = todayDate.getMonth() + 1;
         const newUser = {
             id: uuidv4(),
             userName: userName,
@@ -66,10 +65,17 @@ app.post("/signup", async (req, res) => {
             expenditure: {}
         };
 
-        users.push(newUser);
-        fs.writeFileSync("./data/users.json", JSON.stringify(users));
-        res.status(201).json(newUser);
-        console.log(users)
+        // check if same email exist
+        let filteredUserData = users.filter(userData => userData.email == email);
+
+        if (filteredUserData.length > 0) {
+            res.send('duplicate_email')
+        } else {
+            users.push(newUser);
+            fs.writeFileSync("./data/users.json", JSON.stringify(users));
+            res.status(201).json(newUser);
+            // console.log(users)
+        }
         return;
     }
     catch {
@@ -77,12 +83,18 @@ app.post("/signup", async (req, res) => {
     }
 });
 
-app.post('/login', passport.authenticate('local',
-    {
-        successRedirect: '/input/',
-        failureRedirect: '/login',
-        failureFlash: true
-    }));
+// app.post('/login', passport.authenticate('local',
+//     {
+//         successRedirect: '/input/',
+//         failureRedirect: '/login',
+//         failureFlash: true
+//     }));
+
+app.post('/login',
+    passport.authenticate('local', { failureRedirect: '/login' }),
+    function (req, res) {
+        res.status(200).json(JSON.stringify(req.user));
+    });
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {

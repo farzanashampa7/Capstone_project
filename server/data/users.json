@@ -1,56 +1,9 @@
 [
     {
-        "id": "9ce136f9-ece9-49e7-8990-fe6854ae1f2c",
-        "userName": "shovon",
-        "email": "shovon@gmail.com",
-        "password": "$2b$10$ycucR3Y8Wu10CmEG05dIGuS8wmud4A70ootM7GEK0Qcb0xWpIWdgG",
-        "expenditure": {
-            "2021": {
-                "4": {
-                    "income": [
-                        {
-                            "income": "4000"
-                        }
-                    ],
-                    "expense": [
-                        {
-                            "category": "House Rent",
-                            "amount": "1800"
-                        },
-                        {
-                            "category": "Grocery",
-                            "amount": "750"
-                        },
-                        {
-                            "category": "Restaurant",
-                            "amount": "200"
-                        },
-                        {
-                            "category": "Travel",
-                            "amount": "100"
-                        },
-                        {
-                            "category": "Restaurant",
-                            "amount": "200"
-                        },
-                        {
-                            "category": "Internet Bill",
-                            "amount": "50"
-                        },
-                        {
-                            "category": "Car Insurance",
-                            "amount": "250"
-                        }
-                    ]
-                }
-            }
-        }
-    },
-    {
-        "id": "3e6f9954-7224-4f75-b176-6de948254e2d",
+        "id": "3558fd39-0bb7-458c-a796-6426db371622",
         "userName": "hello",
-        "email": "hello@gmail.com",
-        "password": "$2b$10$n.wdvTDm2WQlkcygTtXnOu7FD1LnGoeIo9BTaxVmlYMmEwrXU2b8q",
+        "email": "hello@mail.com",
+        "password": "$2b$10$Dwb6AD8aueWL6fV3DDF7DOusEmdppNRfAdtIGQ31o4.2m3azyOUBi",
         "expenditure": {
             "2021": {
                 "4": {
@@ -61,23 +14,28 @@
                     ],
                     "expense": [
                         {
+                            "id": "5fff90eb-deba-4b54-919b-b2b215e555c5",
                             "category": "House Rent",
                             "amount": "1800"
                         },
                         {
-                            "category": "Car Insurance",
-                            "amount": "250"
-                        },
-                        {
+                            "id": "8add6c23-9121-4491-b0cc-10dabedf7596",
                             "category": "Grocery",
-                            "amount": "1950"
+                            "amount": "500"
                         },
                         {
+                            "id": "855562bc-13c1-4646-bb7c-1d10d81cf333",
                             "category": "Car Insurance",
                             "amount": "250"
                         },
                         {
-                            "category": "Mobile Bill",
+                            "id": "61117c51-df81-4fdb-baa8-3d239484b26b",
+                            "category": "Car Insurance",
+                            "amount": "298"
+                        },
+                        {
+                            "id": "c5f6aab2-0584-4800-b053-b5053b8a15a3",
+                            "category": "Internet Bill",
                             "amount": "50"
                         }
                     ]

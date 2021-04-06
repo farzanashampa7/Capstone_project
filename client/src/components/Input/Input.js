@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 import "./Input.scss";
+import PieChart from '../Chart/PieChart';
+import DeleteIcon from '../../assets/icons/delete_outline-24px.svg';
 
 class Input extends Component {
     state = {
@@ -12,13 +13,14 @@ class Input extends Component {
         savings: '',
         expenditureList: null
     }
+
+    userID = window.location.search.split('=')[1];
     currentYear = new Date().getFullYear();
     currentMonth = new Date().getMonth() + 1;
 
     componentDidMount() {
         axios
             .get('http://localhost:8080/input', { withCredentials: true })
-            // .get(`http://localhost:8080/input/${id}`, { withCredentials: true })
             .then(res => {
                 console.log('Check Auth', res.data);
 
@@ -46,9 +48,9 @@ class Input extends Component {
     handleSubmit = (e) => {
         const form = e.target;
         e.preventDefault();
-        const id = this.state.userDetails.id;
+        // const id = this.state.userDetails.id;
         axios
-            .post(`http://localhost:8080/input/${id}/addexpense`, {
+            .post(`http://localhost:8080/input/${this.userID}/addexpense`, {
                 category: form.category.value,
                 amount: form.amount.value
             })
@@ -60,9 +62,8 @@ class Input extends Component {
             .catch(err => console.log(err))
     }
     showIncome = () => {
-        const id = this.state.userDetails.id;
         axios
-            .get(`http://localhost:8080/input/${id}/addincome`)
+            .get(`http://localhost:8080/input/${this.userID}/addincome`)
             .then((response) => {
                 let result = 0;
                 for (let i = 0; i < response.data.length; i++) {
@@ -80,9 +81,8 @@ class Input extends Component {
     }
 
     showExpense = () => {
-        const id = this.state.userDetails.id;
         axios
-            .get(`http://localhost:8080/input/${id}/addexpense`)
+            .get(`http://localhost:8080/input/${this.userID}/addexpense`)
             .then((response) => {
                 let result = 0;
                 for (let i = 0; i < response.data.length; i++) {
@@ -103,9 +103,8 @@ class Input extends Component {
     handleIncome = (e) => {
         const form = e.target;
         e.preventDefault();
-        const id = this.state.userDetails.id;
         axios
-            .post(`http://localhost:8080/input/${id}/addincome`, {
+            .post(`http://localhost:8080/input/${this.userID}/addincome`, {
                 income: form.income.value
             })
             .then(res => {
@@ -116,28 +115,49 @@ class Input extends Component {
 
     }
 
+    // handleDeleteExpense = (e) => {
+    //     // e.preventDefault();
+    //     axios
+    //         .delete(`http://localhost:8080/input/${this.userID}/deleteexpense/${id}`)
+    //         .then(res => {
+    //             console.log(res);
+    //         })
+    //         .catch(err => console.log(err))
+    // }
+
     render() {
-        const { income, expenses, savings, expenditureList } = this.state;
+
+        const { income, expenses, savings, expenditureList, userDetails } = this.state;
+        const userName = userDetails ? userDetails.userName : "";
         console.log(expenditureList);
+
+        const pieChartData = [
+            { value: income, name: 'Income' },
+            { value: expenses, name: 'Expenses' },
+            { value: savings, name: 'Savings' }
+        ];
+
         return (
             <section className='main wrapper'>
-                <h2 className='main__header'>Expenditure for {this.getMonth()}, {this.getYear()} </h2>
+                <h2 className='main__header' >Welcome <strong>{userName}</strong>!</h2>
+                <h2 className='main__sub-header'>Expenditure for {this.getMonth()}, {this.getYear()} </h2>
                 <div className='main__container'>
                     <div className='main__flex-div'>
-                        Income: {income}
+                        Income: ${income}
                     </div>
                     <div className='main__flex-div'>
-                        Expenses: {expenses}
+                        Expenses: ${expenses}
                     </div>
                     <div className='main__flex-div'>
-                        Savings: {savings}
+                        Savings: ${savings}
                     </div>
                 </div>
-                {expenses > income && (
+                {
+                    expenses > income &&
                     <div className='main__alert'>
-                        <p>You have crossed your budget!</p>
+                        <p className='main__flash-alert'>!You are spending against your budget!</p>
                     </div>
-                )}
+                }
 
                 <div className='main__container-sub'>
                     <div className='main__form'>
@@ -176,12 +196,16 @@ class Input extends Component {
                     {expenditureList && (
                         <div className='main__expense-container'>
                             {expenditureList.map(item => {
-                                return <li className='main__expense-list'>{item.category} : ${item.amount}</li>
+                                return <div key={item.id} className='main__expense-list'>
+                                    <span >{item.category} : ${item.amount}</span> <button className='main__delete-button'><img src={DeleteIcon} alt='Delete icon' /></button>
+                                </div>
+                                // <span >{item.category} : ${item.amount}</span> <button data-itemid={item.id} onClick={this.handleDeleteExpense()}>Delete</button>
                             }
                             )}
                         </div>
                     )}
                 </div>
+                <PieChart className='main__chart' data={pieChartData} />
             </section>
         );
     }

@@ -14,7 +14,13 @@ class SignUp extends Component {
                 password: form.password.value
             })
             .then(res => {
-                this.props.history.push('/login')
+                let { data } = res;
+                if (data === 'duplicate_email') {
+                    alert('This email is already subscribed. Please use different email to open an account');
+                    form.reset();
+                } else {
+                    this.props.history.push('/login')
+                }
 
             })
             .catch(err => console.log(err))
@@ -23,31 +29,33 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div className="form">
-                <form onSubmit={this.handleSubmit} className="form__group">
-                    <div className="form__section">
-                        <label htmlFor="userName" className="form__label">User name:</label>
+            <div className="signupForm">
+                <h1 className='signupForm__heading'>Get started with Budgetery</h1>
+                <p className='signupForm__text'>Create an account and enjoy Budgetery</p>
+                <form onSubmit={this.handleSubmit} className="signupForm__group">
+                    <div className="signupForm__section">
+                        <label htmlFor="userName" className="signupForm__label">User name:</label>
                         <input type="text"
-                            className="form__control"
+                            className="signupForm__control"
                             id="userName"
                             name="userName"
                             placeholder="Enter User Name"
 
                         />
                     </div>
-                    <div className="form__section ">
-                        <label htmlFor="email" className="form__label">Email address:</label>
+                    <div className="signupForm__section ">
+                        <label htmlFor="email" className="signupForm__label">Email address:</label>
                         <input type="email"
-                            className="form__control"
+                            className="signupForm__control"
                             id="email"
                             name="email"
                             placeholder="Enter email"
                         />
                     </div>
-                    <div className="form__section ">
-                        <label htmlFor="password" className="form__label">Password:</label>
+                    <div className="signupForm__section ">
+                        <label htmlFor="password" className="signupForm__label">Password:</label>
                         <input type="password"
-                            className="form__control"
+                            className="signupForm__control"
                             id="password"
                             name="password"
                             placeholder="Enter password"
@@ -55,7 +63,7 @@ class SignUp extends Component {
                     </div>
                     <button
                         type="submit"
-                        className="form__button"
+                        className="signupForm__button"
                     >
                         Sign Up
                     </button>

@@ -4,7 +4,7 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
 router.use((req, _res, next) => {
-    console.log('Middleware from input router and user', req.user);
+    // console.log('Middleware from input router and user', req.user);
     next();
 })
 
@@ -69,6 +69,7 @@ router.post('/:userId/addexpense', (req, res) => {
     const { category, amount } = req.body;
 
     const newExpense = {
+        id: uuidv4(),
         category: category,
         amount: amount
     };
@@ -90,6 +91,50 @@ router.post('/:userId/addexpense', (req, res) => {
     fs.writeFileSync("./data/users.json", JSON.stringify(users));
     res.status(201).json(users);
 
+});
+
+
+router.delete('/:userId/deleteexpense/:id', (req, res) => {
+    const userId = req.params.userId;
+    // const itemId = req.params.itemId;
+
+    const userData = readUsers();
+    const user = userData.find(user => user.id === userId);
+    const userExpense = user.expenditure[currentYear][currentMonth].expense;
+
+    const deleteExpense = userExpense.find((expense) => {
+        return expense.id === req.params.itemId
+    });
+
+    const expenseIndex = userExpense.indexOf(deleteExpense);
+
+    if (expenseIndex >= 0) {
+        userExpense.splice(expenseIndex, 1);
+        fs.writeFileSync("./data/users.json", JSON.stringify(userData));
+
+        res.status(204).json(deleteExpense);
+        return;
+    }
+    res.status(400);
+    res.send("Expense does not exist");
+
+
+    // const warehouses = readWarehouses();
+    // const foundWarehouse = warehouses.find((warehouse) => {
+    //   return warehouse.id === req.params.id;
+    // });
+
+    // const warehouseIndex = warehouses.indexOf(foundWarehouse);
+
+    // if (warehouseIndex >= 0) {
+    //   warehouses.splice(warehouseIndex, 1);
+    //   fs.writeFileSync("./data/warehouses.json", JSON.stringify(warehouses));
+
+    //   res.status(204).json(foundWarehouse);
+    //   return;
+    // }
+    // res.status(400);
+    // res.send("Warehouse does not exist");
 });
 
 module.exports = router;

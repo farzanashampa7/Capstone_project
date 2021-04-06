@@ -1,13 +1,23 @@
 .main {
+
     &__container {
         display: flex;
         justify-content: space-evenly;
+        margin-bottom: 3rem;
     }
 
     &__header {
         text-align: center;
+        color: salmon;
         font-family: cursive;
-        color: indigo;
+        font-size: 1rem;
+    }
+
+    &__sub-header {
+        text-align: center;
+        font-family: cursive;
+        color:indigo;
+        font-size: 2rem;
     }
 
     &__flex-div {
@@ -23,14 +33,34 @@
     }
 
     &__alert {
-        color: red;
+        background-image: linear-gradient(280deg, rgb(241, 137, 137), rgb(238, 210, 53));
+        width: 32%;
+        margin: 0 auto;
+        border-radius: 0.4rem;
+
+    }
+
+    &__flash-alert {
+        padding: 2rem 2rem;
+        animation: blinker 1s linear infinite;
+        color: black;
+        font-size: 1.2rem;
+
+        @keyframes blinker {
+            50% {
+              opacity: 0;
+            }
+          }
     }
 
     &__container-sub {
         display: flex;
         justify-content: space-between;
-        // border-top: 1px solid lightgrey;
+        border-top: 1px solid lightgrey;
         align-items: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        margin-bottom: 4rem;
     }
 
     &__heading {
@@ -74,12 +104,12 @@
 
     &__button {
         margin-top: 1rem;
-        width: 125px;
+        width: 110px;
         color: #ffffff;
         font-family: cursive;
         font-size: 0.9rem;
-        padding: 1rem 0;
-        background-color: indigo;
+        padding: 0.7rem 0;
+        background-color: salmon;
         border: none;
         border-radius: 2rem;
         
@@ -107,19 +137,30 @@
     }
 
     &__expense-container {
-        width: 35%;
+        width: 30%;
     }
 
     &__expense-list {
-        list-style: none;
-        padding: 1rem 4rem;
+        display: flex;
+        justify-content: space-between;
+        // list-style: none;
+        padding: 0.7rem 2rem;
         // width: 150%;
-        background-image: linear-gradient(310deg, lavender, rgb(239, 228, 247));
+        background-image: linear-gradient(280deg, rgb(239, 225, 250), rgb(241, 229, 228));
         border: 1px solid lightgrey;
         border-radius: 0.4rem;
         margin: 0.4rem;
         font-family: cursive;
-        font-size: 1.2rem;
+        font-size: 1rem;
+    }
+
+    &__delete-button {
+        border: none;
+        background-color: transparent;
+    }
+
+    &__chart {
+        margin-top: 3rem;
     }
     
 }

@@ -5,6 +5,10 @@ import './Login.scss';
 
 class Login extends Component {
 
+    state = {
+        isAuthenticated: true
+    }
+
     handleSubmit = (e) => {
         const form = e.target;
         e.preventDefault();
@@ -18,16 +22,29 @@ class Login extends Component {
             url: 'http://localhost:8080/login'
         })
             .then(res => {
-                console.log(res.data)
-                // const id = res.data.id;
-                this.props.history.push('/input')
+                // console.log(res.data)
+                const id = JSON.parse(res.data).id;
+                this.props.history.push('/input?id=' + id)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                this.setState({
+                    isAuthenticated: false
+                })
+            })
     }
 
     render() {
         return (
             <div className='loginForm'>
+
+                {
+                    !this.state.isAuthenticated &&
+                    alert('Invalid Username or password')
+                }
+                <h1 className='loginForm__heading'>Welcome back!</h1>
+                <p className='loginForm__text'>Enter your credentials and enjoy Budgetery</p>
+
                 <form onSubmit={this.handleSubmit} className='loginForm__group'>
                     <div className="loginForm__section">
                         <label htmlFor="email" className='loginForm__label'>Email address</label>
@@ -55,7 +72,7 @@ class Login extends Component {
                     </button>
                 </form>
                 <p className='loginForm__text'>Don't have an account? <Link className='loginForm__link' to='/signup'>Sign Up!</Link> </p>
-            </div>
+            </div >
         );
     }
 }
