@@ -8,9 +8,9 @@ class Input extends Component {
     state = {
         isAuthenticated: false,
         userDetails: null,
-        income: '',
-        expenses: '',
-        savings: '',
+        income: 0,
+        expenses: 0,
+        savings: 0,
         expenditureList: null
     }
 
@@ -201,7 +201,11 @@ class Input extends Component {
                         </div>
                     )}
                 </div>
-                <PieChart className='main__chart' data={pieChartData} />
+                <div className='main__chart-container'>
+                    <h2 className='main__chart-heading'>See your budget chart</h2>
+                    <PieChart className='main__chart' data={pieChartData} />
+                </div>
+
             </section>
         );
     }

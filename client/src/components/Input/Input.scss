@@ -179,8 +179,20 @@
         background-color: transparent;
     }
 
+    &__chart-container{
+        margin-bottom: 3rem;
+    }
+
     &__chart {
-        margin-top: 3rem;
+        margin: 4rem 0;
+    }
+
+    &__chart-heading {
+        text-align: center;
+        color: rgb(46, 44, 44);
+        font-size: 1.5rem;
+        font-family: cursive;
+
     }
     
 }
