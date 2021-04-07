@@ -8,7 +8,6 @@ const { v4: uuidv4 } = require("uuid");
 const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('passport');
-const methodOverride = require('method-override');
 
 // //MALCOLM IN THE MIDDLEWARES
 app.use(cors({
@@ -50,7 +49,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(methodOverride('_method'));
 
 app.post("/signup", async (req, res) => {
     try {
@@ -94,11 +92,11 @@ function checkAuthenticated(req, res, next) {
     res.redirect('/login');
 }
 
-// app.get('/logout', (req, res) => {
-//     req.logOut();
-//     req.session.destroy();
-//     res.redirect('/');
-// })
+app.get('/logout', (req, res) => {
+    req.logOut();
+    req.session.destroy();
+    res.redirect('/');
+})
 
 
 app.get('/input', checkAuthenticated, (req, res) => {

@@ -1,1 +1,39 @@
-[{"id":"3558fd39-0bb7-458c-a796-6426db371622","userName":"hello","email":"hello@mail.com","password":"$2b$10$Dwb6AD8aueWL6fV3DDF7DOusEmdppNRfAdtIGQ31o4.2m3azyOUBi","expenditure":{"2021":{"4":{"income":[{"income":"4000"},{"income":"500"}],"expense":[{"id":"1484c22f-6d30-470f-a68d-8a557b0e7038","category":"Grocery","amount":"500"},{"id":"e0ae8483-0506-444b-af8e-940e04821416","category":"Grocery","amount":"120"},{"id":"936f712b-6543-4522-abd3-3d7000776362","category":"Grocery","amount":"12"},{"id":"e892de61-1e27-4411-9671-e7c0ac7ffab4","category":"House Rent","amount":"45"},{"id":"09b48b97-107e-4638-b480-936c76ec6c08","category":"House Rent","amount":"654"},{"id":"e8de138e-737d-4a83-92a2-ae1834c3464e","category":"Internet Bill","amount":"1321"}]}}}},{"id":"5d54b6ea-9984-412b-b423-8417c62961f7","userName":"farzana","email":"farzana@mail.com","password":"$2b$10$1YpzbY5aCrCEDiYwVTisse/9advKYYu5ETimwsrPXqjo0WlKy9sca","expenditure":{"2021":{"4":{"income":[{"income":"4000"},{"income":"1000"}],"expense":[{"id":"7eee3f3c-b2c8-440e-9b53-c9eb52bf1b9f","category":"Travel","amount":"2500"},{"id":"fb7aee62-2724-45be-a2d8-c044d8ff19b4","category":"House Rent","amount":"1800"},{"id":"27ca0361-d4c6-4d8b-8fb5-f05e9ae53e80","category":"Internet Bill","amount":"200"}]}}}},{"id":"933b1eb6-b726-49b0-a377-710bdac966b2","userName":"shovon","email":"shovon@mail.com","password":"$2b$10$QY7lcMGF2wBV9S0q1uANtOZFQENhmTz.xLpEq1r63enmbqVyUE3bS","expenditure":{"2021":{"4":{"income":[{"income":"3000"}],"expense":[{"id":"d9eb0ef9-75fc-4705-ae3d-ea6bee5fd1ba","category":"House Rent","amount":"2000"}]}}}},{"id":"d0afa308-8db5-47ff-aa8b-e24325307f13","userName":"Jane","email":"jane@mail.com","password":"$2b$10$DGG0o.QFa5PIFkIuxFTqSuzdt6D0vgPY7yjOhZRczaXDE9onpkaGS","expenditure":{"2021":{"4":{"income":[{"income":"3000"}],"expense":[{"id":"de23f1c7-b3d2-44f1-8ef5-ae5cd56df664","category":"House Rent","amount":"1800"},{"id":"b888a39e-7297-4c0c-b49f-e1cd6e631ea2","category":"Grocery","amount":"500"}]}}}}]
+[
+    {
+        "id": "5d54b6ea-9984-412b-b423-8417c62961f7",
+        "userName": "farzana",
+        "email": "farzana@mail.com",
+        "password": "$2b$10$1YpzbY5aCrCEDiYwVTisse/9advKYYu5ETimwsrPXqjo0WlKy9sca",
+        "expenditure": {
+            "2021": {
+                "4": {
+                    "income": [
+                        {
+                            "income": "4000"
+                        },
+                        {
+                            "income": "1000"
+                        }
+                    ],
+                    "expense": [
+                        {
+                            "id": "7eee3f3c-b2c8-440e-9b53-c9eb52bf1b9f",
+                            "category": "Travel",
+                            "amount": "2500"
+                        },
+                        {
+                            "id": "fb7aee62-2724-45be-a2d8-c044d8ff19b4",
+                            "category": "House Rent",
+                            "amount": "1800"
+                        },
+                        {
+                            "id": "27ca0361-d4c6-4d8b-8fb5-f05e9ae53e80",
+                            "category": "Internet Bill",
+                            "amount": "200"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+]

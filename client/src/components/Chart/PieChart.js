@@ -5,9 +5,11 @@ export default function PieChart(props) {
     const { data } = props;
     const options = {
         title: {
-            text: 'Budget chart',
-            subtext: 'Find your information',
-            left: 'center'
+            text: '',
+            subtext: '',
+            left: 'center',
+            padding: 3
+
         },
         tooltip: {
             trigger: 'item'
@@ -15,12 +17,14 @@ export default function PieChart(props) {
         legend: {
             orient: 'vertical',
             left: 'left',
+            padding: 5
         },
         series: [
             {
                 name: 'Budget chart',
                 type: 'pie',
-                radius: '50%',
+                radius: '80%',
+                margin: 5,
                 data: data,
                 emphasis: {
                     itemStyle: {

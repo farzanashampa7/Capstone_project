@@ -52,7 +52,6 @@ class Input extends Component {
                 amount: form.amount.value
             })
             .then(res => {
-                console.log(res.data)
                 form.reset();
                 this.showExpense();
             })
@@ -133,7 +132,7 @@ class Input extends Component {
 
         return (
             <section className='main wrapper'>
-                <a href='/logout' className='main__logout'>Log out</a>
+                <a href='/' className='main__logout'>Log out</a>
                 <h2 className='main__header' >Welcome <strong>{userName}</strong>!</h2>
                 <h2 className='main__sub-header'>Expenditure for {this.getMonth()}, {this.getYear()} </h2>
                 <div className='main__container'>
@@ -180,6 +179,8 @@ class Input extends Component {
                                     <option value='Restaurant'>Restaurant</option>
                                     <option value='Shopping'>Shopping</option>
                                     <option value='Travel'>Travel</option>
+                                    <option value='RRSP Contribution'>RRSP Contribution</option>
+                                    <option value='TFSA Contribution'>TFSA Contribution</option>
                                 </select>
 
                                 <label className='main__input-label' htmlFor='amount'>Enter amount</label>
