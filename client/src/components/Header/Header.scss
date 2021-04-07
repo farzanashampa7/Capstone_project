@@ -16,7 +16,7 @@
 
 .hero {
     background-color: lavender;
-    height: 88.5vh;
+    height: 92.5vh;
     display: flex;
     flex-direction: column;
 
@@ -26,7 +26,7 @@
 
         &--text {
             width: 40%;
-            margin-left: 3rem;
+            // margin-left: 3rem;
             padding-top: 2rem;
             font-family: cursive;
             font-size: 1.6rem;

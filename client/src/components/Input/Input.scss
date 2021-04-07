@@ -13,6 +13,16 @@
         font-size: 1rem;
     }
 
+    &__logout {
+        float: right;
+        text-decoration: none;
+        color: salmon;
+        padding: 0.6rem 1rem;
+        border-radius: 2rem;
+        font-family: cursive;
+        background-image: linear-gradient(280deg, rgb(239, 225, 250), rgb(241, 229, 228));
+    }
+
     &__sub-header {
         text-align: center;
         font-family: cursive;
@@ -57,7 +67,6 @@
         display: flex;
         justify-content: space-between;
         border-top: 1px solid lightgrey;
-        align-items: center;
         margin-top: 3rem;
         padding-top: 2rem;
         margin-bottom: 4rem;
@@ -66,7 +75,6 @@
     &__heading {
         color: rgb(46, 44, 44);
         font-size: 1.4rem;
-        // border-bottom: 1px solid lightgray;
         font-family: cursive;
     }
 
@@ -131,21 +139,33 @@
         border-radius: 0.4rem;
         border: 1px solid rgb(163, 159, 159);
         font-family: cursive;
-        color: grey;
+        color: rgb(46, 44, 44);;
         font-size: 0.9rem;
         margin-bottom: 1.6rem;
     }
 
     &__expense-container {
         width: 30%;
+        margin-top: 2rem;
+        max-height: 520px;
+        overflow-y: scroll;
+        background-image: linear-gradient(rgb(241, 240, 240), white);
+        border-radius: 0.5rem;
+        border: 1ps solid transparent;
+        box-shadow: 3px 3px 9px 1px rgb(175, 172, 172);
+    }
+
+    &__heading-1 {
+        color: rgb(46, 44, 44);
+        font-size: 1.4rem;
+        font-family: cursive;
+        text-align: center;
     }
 
     &__expense-list {
         display: flex;
         justify-content: space-between;
-        // list-style: none;
         padding: 0.7rem 2rem;
-        // width: 150%;
         background-image: linear-gradient(280deg, rgb(239, 225, 250), rgb(241, 229, 228));
         border: 1px solid lightgrey;
         border-radius: 0.4rem;

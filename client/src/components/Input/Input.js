@@ -22,13 +22,11 @@ class Input extends Component {
         axios
             .get('http://localhost:8080/input', { withCredentials: true })
             .then(res => {
-                console.log('Check Auth', res.data);
 
                 this.setState({
                     isAuthenticated: true,
                     userDetails: res.data
                 })
-                console.log(this.state.userDetails)
                 this.showIncome();
                 this.showExpense();
             })
@@ -48,7 +46,6 @@ class Input extends Component {
     handleSubmit = (e) => {
         const form = e.target;
         e.preventDefault();
-        // const id = this.state.userDetails.id;
         axios
             .post(`http://localhost:8080/input/${this.userID}/addexpense`, {
                 category: form.category.value,
@@ -67,9 +64,8 @@ class Input extends Component {
             .then((response) => {
                 let result = 0;
                 for (let i = 0; i < response.data.length; i++) {
-                    console.log(result = result + Number(response.data[i].income))
+                    result = result + Number(response.data[i].income)
                 }
-                console.log(result)
                 this.setState({
                     income: result,
                     savings: result - this.state.expenses,
@@ -94,7 +90,6 @@ class Input extends Component {
                     expenditureList: response.data
 
                 })
-                console.log(this.state.expenditureList);
 
             })
             .catch(err => console.log(err))
@@ -115,21 +110,20 @@ class Input extends Component {
 
     }
 
-    // handleDeleteExpense = (e) => {
-    //     // e.preventDefault();
-    //     axios
-    //         .delete(`http://localhost:8080/input/${this.userID}/deleteexpense/${id}`)
-    //         .then(res => {
-    //             console.log(res);
-    //         })
-    //         .catch(err => console.log(err))
-    // }
+    handleDeleteExpense = (id, e) => {
+        e.preventDefault();
+        axios
+            .delete(`http://localhost:8080/input/${this.userID}/deleteexpense/${id}`)
+            .then(res => {
+                this.showExpense();
+            })
+            .catch(err => console.log(err))
+    }
 
     render() {
 
         const { income, expenses, savings, expenditureList, userDetails } = this.state;
         const userName = userDetails ? userDetails.userName : "";
-        console.log(expenditureList);
 
         const pieChartData = [
             { value: income, name: 'Income' },
@@ -139,6 +133,7 @@ class Input extends Component {
 
         return (
             <section className='main wrapper'>
+                <a href='/logout' className='main__logout'>Log out</a>
                 <h2 className='main__header' >Welcome <strong>{userName}</strong>!</h2>
                 <h2 className='main__sub-header'>Expenditure for {this.getMonth()}, {this.getYear()} </h2>
                 <div className='main__container'>
@@ -195,11 +190,11 @@ class Input extends Component {
                     </div>
                     {expenditureList && (
                         <div className='main__expense-container'>
+                            <h3 className='main__heading-1'>Expense list</h3>
                             {expenditureList.map(item => {
                                 return <div key={item.id} className='main__expense-list'>
-                                    <span >{item.category} : ${item.amount}</span> <button className='main__delete-button'><img src={DeleteIcon} alt='Delete icon' /></button>
+                                    <span >{item.category} : ${item.amount}</span> <button className='main__delete-button' onClick={(e) => { this.handleDeleteExpense(item.id, e) }}><img src={DeleteIcon} alt='Delete icon' /></button>
                                 </div>
-                                // <span >{item.category} : ${item.amount}</span> <button data-itemid={item.id} onClick={this.handleDeleteExpense()}>Delete</button>
                             }
                             )}
                         </div>

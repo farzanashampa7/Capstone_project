@@ -8,6 +8,7 @@ const { v4: uuidv4 } = require("uuid");
 const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('passport');
+const methodOverride = require('method-override');
 
 // //MALCOLM IN THE MIDDLEWARES
 app.use(cors({
@@ -49,14 +50,12 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+// app.use(methodOverride('_method'));
 
 app.post("/signup", async (req, res) => {
     try {
         const { userName, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        // const todayDate = new Date();
-        // const year = todayDate.getFullYear();
-        // const month = todayDate.getMonth() + 1;
         const newUser = {
             id: uuidv4(),
             userName: userName,
@@ -74,7 +73,6 @@ app.post("/signup", async (req, res) => {
             users.push(newUser);
             fs.writeFileSync("./data/users.json", JSON.stringify(users));
             res.status(201).json(newUser);
-            // console.log(users)
         }
         return;
     }
@@ -82,13 +80,6 @@ app.post("/signup", async (req, res) => {
         console.log('Catching error')
     }
 });
-
-// app.post('/login', passport.authenticate('local',
-//     {
-//         successRedirect: '/input/',
-//         failureRedirect: '/login',
-//         failureFlash: true
-//     }));
 
 app.post('/login',
     passport.authenticate('local', { failureRedirect: '/login' }),
@@ -102,6 +93,13 @@ function checkAuthenticated(req, res, next) {
     }
     res.redirect('/login');
 }
+
+// app.get('/logout', (req, res) => {
+//     req.logOut();
+//     req.session.destroy();
+//     res.redirect('/');
+// })
+
 
 app.get('/input', checkAuthenticated, (req, res) => {
     if (req.user === undefined) return res.status(401).send('Unauthorized');

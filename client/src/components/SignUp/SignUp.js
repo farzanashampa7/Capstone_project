@@ -48,6 +48,7 @@ class SignUp extends Component {
                         <input type="email"
                             className="signupForm__control"
                             id="email"
+                            autoComplete='off'
                             name="email"
                             placeholder="Enter email"
                         />
@@ -57,6 +58,7 @@ class SignUp extends Component {
                         <input type="password"
                             className="signupForm__control"
                             id="password"
+                            autoComplete='new-password'
                             name="password"
                             placeholder="Enter password"
                         />

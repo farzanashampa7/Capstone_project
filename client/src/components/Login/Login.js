@@ -22,7 +22,6 @@ class Login extends Component {
             url: 'http://localhost:8080/login'
         })
             .then(res => {
-                // console.log(res.data)
                 const id = JSON.parse(res.data).id;
                 this.props.history.push('/input?id=' + id)
             })
@@ -49,6 +48,7 @@ class Login extends Component {
                     <div className="loginForm__section">
                         <label htmlFor="email" className='loginForm__label'>Email address</label>
                         <input type="email"
+                            autoComplete='off'
                             className="loginForm__control"
                             id="email"
                             name="email"
@@ -58,6 +58,7 @@ class Login extends Component {
                     <div className="loginForm__section">
                         <label htmlFor="password" className='loginForm__label'>Password</label>
                         <input type="password"
+                            autoComplete='new-password'
                             className="loginForm__control"
                             id="password"
                             name="password"
